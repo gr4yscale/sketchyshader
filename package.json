@@ -1,0 +1,34 @@
+{
+  "name": "three-glslify-sketch-boilerplate",
+  "version": "1.0.0",
+  "description": "a boilerplate which makes use of modern js tooling, gives convenience to a stackgl modules using glslify, and a three.js harnes for quick prorotyping",
+  "main": "index.js",
+  "author": "Tyler Powers / @gr4yscale",
+  "license": "ISC",
+  "scripts": {
+    "devserver": "budo index.js:js/bundle.js -t glslify -v --live | garnish",
+    "build": "browserify -t glslify index.js | uglifyjs -cm > js/bundle.js"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.3",
+    "browserify-shim": "^3.8.9",
+    "budo": "^4.0.0",
+    "dat-gui": "^0.5.0",
+    "domready": "^1.0.8",
+    "garnish": "^2.1.3",
+    "glslify": "^2.2.1",
+    "glsl-noise": "0.0.0",
+    "three-orbit-viewer": "^69.3.0",
+    "uglify-js": "^2.4.23",
+    "watchify": "^3.2.1"
+  },
+  "browserify": {
+    "transform": [
+      "glslify",
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "three": "global:THREE"
+  }
+}
